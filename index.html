@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Official revolutionprep.com API Documentation</title>
+    <style>
+      body {
+        margin:0;
+        font-family: Helvetica,Arial,sans-serif;
+      }
+      
+      p, li, td, th, dd {
+        color: #333333;
+        font-size: 14px;
+        line-height: 1.5em
+      }
+      
+      h1 {
+        font-size: 28px;
+        line-height: 42px;
+        margin: 10px 0 21px;
+        text-align: left;
+        text-shadow: 1px 1px 0 #CCCCCC;
+      }
+      
+      h2 {
+        font-size: 18px;
+        line-height: 21px;
+        margin: 0 0 21px;
+        text-align: left;
+        text-shadow: 1px 1px 0 #CCCCCC;
+      }
+      
+      h3 {
+        font-size: 16px;
+        line-height: 21px;
+        margin: 21px 0;
+        text-align: left;
+      }
+      
+      pre {
+        overflow: auto;
+        padding: 20px;
+      }
+      
+      code {
+        padding: 0 2px;
+      }
+
+      code, pre {
+        background-color: #333333;
+        color: #F5DEB3;
+        font-family:'Bitstream Vera Sans Mono',"Monaco",Courier,monospace;
+        font-size:12px;
+      }
+      
+      div#docwrapper {
+        border-top: 4px solid;
+        border-bottom: 4px solid;
+        margin: 0 auto;
+        padding-bottom: 20px;
+        width: 1000px;
+      }
+      
+      div#nav {
+        border-bottom: 1px solid;
+        padding: 10px 0;
+      }
+      
+      div#nav a {
+        margin: 0 2px;
+        border-bottom: 1px dotted;
+        color: #8B0000;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="docwrapper">
+      <div id="nav">
+        <a href="#instructor_search">Instructor Search</a>
+      </div>
+      
+      <h1 id="instructor_search">API:Instructor Search</h1>
+      
+      <h2>Attributes:</h2>
+      <ul>
+        <li><code>current_page</code>: Current page # of results</li>
+        <li><code>total_entries</code>: Total number of results for the given query</li>
+        <li><code>total_pages</code>: Total number of pages of results</li>
+        <li><code>instructors</code>: List of instructors</li>
+        <ul>
+          <li><code>id</code>: Id of the instructor record</li>
+          <li><code>abbreviated_name</code>: First name of the instructor with abbreviated last name</li>
+          <li><code>university</code>: University name that the instructor attended</li>
+          <li><code>bio</code>: Truncated Biography of the instructor</li>
+          <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
+          <li><code>profile_url</code>: Url to retrieve the details of the instructor</li>
+          <li><code>awesome_rating</code>: This is a overall performance rating based on numerous factors</li>
+          <li><code>average_rating</code>: Average rating based on submitted reviews</li>
+          <li><code>reviews_count</code>: Number of submitted reviews for this instructor</li>
+          <li><code>type</code>: Type of instructor (Standard Tutor or GPA Protection Tutor)</li>
+        </ul>
+      </ul>
+      
+      <h2>Methods:</h2>
+    
+      <h3>List</h3></strong>
+      <p>
+        URL: <code>https://revolutionprep.com/api/v1/instructors.[format]</code><br>
+        Method: <code>GET</code><br>
+        Optional Parameters:<br>
+		<code>keywords:</code> This could be any combination of words separated by spaces<br>
+        <code>page:</code> an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 25 records per page<br>
+      </p>
+      
+      <h3>JSON example</h3>
+      <pre>
+https://revolutionprep.com/api/v1/instructors?keywords=Jimmy
+
+{
+    "current_page": 1,
+    "total_entries": 1,
+    "total_pages": 1,
+    "instructors": [
+        {
+            "id": 1309,
+            "abbreviated_name": "Jimmy B.",
+            "university": "Chapman University",
+            "bio": "Jimmy has been teaching for six years.  He started out directing Shakespeare for youth theater, a...",
+            "avatar_url": "https://s3.amazonaws.com/revrails-development/profile_attachments/9688/Jimmy.Bowman.jpg",
+            "profile_url": "http://http://localhost:3333/api/v1/instructors/1309",
+            "awesome_rating": 98.3,
+            "average_rating": 4.9,
+            "reviews_count": 270,
+            "type": "Standard Tutor"
+        }
+    ]
+}
+      </pre>
+    </div>
+  </body>
+</html>
