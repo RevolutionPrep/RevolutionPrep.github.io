@@ -1,0 +1,147 @@
+---
+layout: docs
+title: Instructor API Docs
+slug: instructors
+base_url: "../"
+---
+<h1 id="instructor-search">API:Instructor Search</h1>
+
+<h2>Attributes:</h2>
+<ul>
+  <li><code>current_page</code>: Current page # of results</li>
+  <li><code>total_entries</code>: Total number of results for the given query</li>
+  <li><code>total_pages</code>: Total number of pages of results</li>
+  <li><code>instructors</code>: List of instructors</li>
+  <ul>
+    <li><code>id</code>: Id of the instructor record</li>
+    <li><code>abbreviated_name</code>: First name of the instructor with abbreviated last name</li>
+    <li><code>university</code>: University name that the instructor attended</li>
+    <li><code>bio</code>: Truncated Biography of the instructor</li>
+    <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
+    <li><code>profile_url</code>: Url to retrieve the details of the instructor</li>
+    <li><code>awesome_rating</code>: This is a overall performance rating based on numerous factors</li>
+    <li><code>average_rating</code>: Average rating based on submitted reviews</li>
+    <li><code>reviews_count</code>: Number of submitted reviews for this instructor</li>
+    <li><code>type</code>: Type of instructor (Standard or GPA Protection)</li>
+  </ul>
+</ul>
+
+<h2 id="js-search-methods">Methods:</h2>
+
+<h3>List</h3></strong>
+<p>
+  URL: <code>https://revolutionprep.com/api/v1/instructors.[format]</code><br>
+  Method: <code>GET</code><br>
+  Optional Parameters:<br>
+  <code>query:</code> This could be any combination of words separated by spaces<br>
+  <code>zip:</code> A US zip code which returns results sorted by zip code nearest to furthest<br>
+  <code>page:</code> an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 25 records per page<br>
+</p>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+  // https://console.revolutionprep.com/api/v1/instructors.json?query=Jimmy
+
+  {
+      "current_page": 1,
+      "total_entries": 1,
+      "total_pages": 1,
+      "instructors": [
+          {
+              "id": 1309,
+              "abbreviated_name": "Jimmy B.",
+              "university": "Chapman University",
+              "bio": "Jimmy has been teaching for six years.  He started out directing Shakespeare for youth theater, a...",
+              "avatar_url": "https://s3.amazonaws.com/revrails-development/profile_attachments/9688/Jimmy.Bowman.jpg",
+              "profile_url": "http://http://localhost:3333/api/v1/instructors/1309.json",
+              "awesome_rating": 98.3,
+              "average_rating": 4.9,
+              "reviews_count": 270,
+              "type": "Standard Tutor"
+          }
+      ]
+  }
+{% endhighlight %}
+
+<h1 id="instructor-details">API:Instructor Details</h1>
+
+<h2>Attributes:</h2>
+<ul>
+  <li><code>id</code>: Id of the instructor record</li>
+  <li><code>abbreviated_name</code>: First name of the instructor with abbreviated last name</li>
+  <li><code>university</code>: University name that the instructor attended</li>
+  <li><code>major</code>: Instructors major at university</li>
+  <li><code>bio</code>: Full Biography of the instructor</li>
+  <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
+  <li><code>awesome_rating</code>: This is a overall performance rating based on numerous factors</li>
+  <li><code>average_rating</code>: Average rating based on submitted reviews</li>
+  <li><code>reviews_count</code>: Number of submitted reviews for this instructor</li>
+  <li><code>type</code>: Type of instructor (Standard or GPA Protection)</li>
+  <li><code>sat_percentile</code>: Sat score percentile</li>
+  <li><code>act_percentile</code>: Act score percentile</li>
+  <li><code>premium</code>: Returns true if instructor is a premium instructor</li>
+  <li><code>subjects</code>: An array of subject names the instructor is proficient in teaching</li>
+  <li><code>location</code>: Geographical location where the instructor is based</li>
+  <ul>
+    <li><code>city</code>: Name of city</li>
+    <li><code>state</code>: Name of state</li>
+    <li><code>zip</code>: Postal zip code</li>
+  </ul>
+  <li><code>student_reviews</code>: Collection of 10 most recent reviews on instructors by students</li>
+  <ul>
+    <li><code>student_name</code>: Abbreviated name of student</li>
+    <li><code>stars</code>: Star rating given to the instructor based on a 5 star rating</li>
+    <li><code>comment</code>: Comment made by the student</li>
+    <li><code>reviewed_on</code>: The date a student submitted the review</li>
+  </ul>
+</ul>
+
+<h2>Methods:</h2>
+
+<h3>List</h3></strong>
+<p>
+  URL: <code>https://console.revolutionprep.com/api/v1/instructors/[id].[format]</code><br>
+  Method: <code>GET</code><br>
+  Required Parameters:<br>
+  <code>id:</code> This is the primary id of the instructor<br>
+</p>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+// https://console.revolutionprep.com/api/v1/instructors/1309.json
+
+{
+  "id": 1309,
+  "abbreviated_name": "Jimmy B.",
+  "university": "Chapman University",
+  "major": "Creative Writing, Theater",
+  "bio": "Jimmy has been teaching for six years.  He started out directing Shakespeare for youth theater, and now teaches English, writing, SAT/ACT prep, and improvisational comedy to students of all ages.  In over three years with Revolution Prep, he has been rated as an A/A+ teacher by 97% of his students.  Jimmy graduated from Chapman University with degrees in Creative Writing and Theater and was involved in a popular campus improv group that continues to perform in theaters all around Southern California.  In his free time Jimmy is always up for a competitive game of Ultimate Frisbee.",
+  "avatar_url": "https://s3.amazonaws.com/revrails-development/profile_attachments/9688/Jimmy.Bowman.jpg",
+  "awesome_rating": 98.3,
+  "average_rating": 4.9,
+  "reviews_count": 270,
+  "type": "Standard",
+  "sat_percentile": 99,
+  "act_percentile": null,
+  "premium": false,
+  "subjects": [
+      "10th Grade English",
+      "9th Grade English"
+  ],
+  "location": {
+      "city": "Toluca Lake",
+      "state": "CA",
+      "zip_code": "91602"
+  },
+  student_reviews: [
+    {
+    student_name: "Karin L.",
+    stars: 5,
+    comment: "Yes, he keeps the class interactive and interesting throughout the entire three hours which is very hard to do",
+    reviewed_on: "05/30/13"
+    },
+
+    ect...
+  ]
+}
+{% endhighlight %}

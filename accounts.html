@@ -1,0 +1,111 @@
+---
+layout: docs
+title: Account API Docs
+slug: accounts
+base_url: "../"
+---
+<h1 id="account-search">API:Account Search</h1>
+
+<h2>Attributes:</h2>
+<ul>
+  <li><code>current_page</code>: Current page # of results</li>
+  <li><code>total_entries</code>: Total number of results for the given query</li>
+  <li><code>total_pages</code>: Total number of pages of results</li>
+  <li><code>accounts</code>: List of accounts</li>
+  <ul>
+    <li><code>id</code>: Id of the account record</li>
+    <li><code>name</code>: Name of the account</li>
+    <li><code>profile_url</code>: Url to retrieve the details of the account</li>
+    <li><code>location</code>: Geographical location where the account is located</li>
+    <ul>
+      <li><code>city</code>: Name of city</li>
+      <li><code>state</code>: Name of state</li>
+      <li><code>zip</code>: Postal zip code</li>
+    </ul>
+  </ul>
+</ul>
+
+<h2>Methods:</h2>
+
+<h3>List</h3></strong>
+<p>
+  URL: <code>https://revolutionprep.com/api/v1/accounts.[format]</code><br>
+  Method: <code>GET</code><br>
+  Optional Parameters:<br>
+  <code>query:</code> This could be any combination of words separated by spaces and queries the name, city and state for a match<br>
+  <code>latlng:</code> A latitude and longitude which returns results sorted by nearest to furthest. The input is seperated by a colon. Example: <code>latlng=25.789:-80.2264</code><br>
+  <code>zip:</code> A US zip code which returns results sorted by nearest to furthest<br>
+  <code>page:</code> an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 50 records per page<br>
+</p>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+// https://console.revolutionprep.com/api/v1/accounts.json?query=Academia+Interamericana+Panama&latlng=25.789:-80.2264
+
+{
+  "current_page": 1,
+  "total_entries": 1,
+  "total_pages": 1,
+  "accounts": [
+      {
+          "id": 5515,
+          "name": "Academia Interamericana Panama",
+          "profile_url": "http://localhost:3333/api/v1/accounts/5515",
+          "location": {
+              "city": "Miami",
+              "state": "FL",
+              "zip_code": null
+          }
+      }
+  ]
+}
+{% endhighlight %}
+
+<h1 id="account-details">API:Account Details</h1>
+
+<h2>Attributes:</h2>
+<ul>
+  <li><code>id</code>: Id of the account record</li>
+  <li><code>name</code>: Name of the account</li>
+  <li><code>website_url</code>: Url to account website</li>
+  <li><code>level</code>: Account level 0-3</li>
+  <li><code>private_school</code>: Indicates if the school is private (true/false)</li>
+  <li><code>location</code>: Geographical location where the account is located</li>
+  <ul>
+    <li><code>address</code>: Street Name and number</li>
+    <li><code>city</code>: Name of city</li>
+    <li><code>state</code>: Name of state</li>
+    <li><code>zip</code>: Postal zip code</li>
+  </ul>
+</ul>
+
+<h2>Methods:</h2>
+
+<h3>List</h3></strong>
+<p>
+  URL: <code>https://revolutionprep.com/api/v1/accounts/[id].[format]</code><br>
+  Method: <code>GET</code><br>
+  Required Parameters:<br>
+  <code>id:</code> This is the id of the account<br>
+</p>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+// https://console.revolutionprep.com/api/v1/accounts/5515.json
+
+{
+  "id": 5515,
+  "name": "Academia Interamericana Panama",
+  "website": ""
+  "level": 3,
+  "private_school": true,
+  "location": {
+      "address": ""
+      "city": "Miami",
+      "state": "FL",
+      "zip_code": null
+  }
+}
+{% endhighlight %}
+
+</div>
