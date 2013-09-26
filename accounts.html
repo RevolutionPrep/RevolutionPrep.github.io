@@ -21,6 +21,8 @@ base_url: "../"
       <li><code>city</code>: Name of city</li>
       <li><code>state</code>: Name of state</li>
       <li><code>zip</code>: Postal zip code</li>
+      <li><code>lat</code>: Latitude</li>
+      <li><code>lng</code>: Longitude</li>
     </ul>
   </ul>
 </ul>
@@ -29,10 +31,10 @@ base_url: "../"
 
 <h3>List</h3></strong>
 <p>
-  URL: <code>https://revolutionprep.com/api/v1/accounts.[format]</code><br>
+  URL: <code>https://console.revolutionprep.com/api/v1/accounts.[format]</code><br>
   Method: <code>GET</code><br>
   Optional Parameters:<br>
-  <code>query:</code> This could be any combination of words separated by spaces and queries the name, city and state for a match<br>
+  <code>query:</code> This could be any combination of words separated by spaces and queries the name for a match<br>
   <code>latlng:</code> A latitude and longitude which returns results sorted by nearest to furthest. The input is seperated by a colon. Example: <code>latlng=25.789:-80.2264</code><br>
   <code>zip:</code> A US zip code which returns results sorted by nearest to furthest<br>
   <code>page:</code> an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 50 records per page<br>
@@ -54,7 +56,9 @@ base_url: "../"
           "location": {
               "city": "Miami",
               "state": "FL",
-              "zip_code": null
+              "zip_code": null,
+              "lat": -30,
+              "lng": 119
           }
       }
   ]
@@ -76,6 +80,8 @@ base_url: "../"
     <li><code>city</code>: Name of city</li>
     <li><code>state</code>: Name of state</li>
     <li><code>zip</code>: Postal zip code</li>
+    <li><code>lat</code>: Latitude</li>
+    <li><code>lng</code>: Longitude</li>
   </ul>
 </ul>
 
@@ -103,7 +109,9 @@ base_url: "../"
       "address": ""
       "city": "Miami",
       "state": "FL",
-      "zip_code": null
+      "zip_code": null,
+      "lat": -30,
+      "lng": 119
   }
 }
 {% endhighlight %}
