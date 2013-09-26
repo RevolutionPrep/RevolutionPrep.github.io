@@ -1,0 +1,83 @@
+---
+layout: docs
+title: Program API Docs
+slug: programs
+base_url: "../"
+---
+<h1 id="program-details">API:Program Details</h1>
+
+<h2>Attributes:</h2>
+<ul>
+  <li><code>id</code>: Id of the program record</li>
+  <li><code>name</code>: Custom name of the program - usually nil</li>
+  <li><code>full_name</code>: Descriptive name of program.  Includes subject, segment, name and brand name</li>
+  <li><code>round</code>: Round the program is preparing for.</li>
+  <li><code>price</code>: Price of the program</li>
+  <li><code>enroll_url</code>: Url to purchase the program</li>
+  <li><code>location</code>: Geographical location where the program is based</li>
+  <ul>
+    <li><code>address</code>: Address of location</li>
+    <li><code>city</code>: Name of city</li>
+    <li><code>state</code>: Name of state</li>
+    <li><code>zip</code>: Postal zip code</li>
+  </ul>
+  <li><code>instructor_ids</code>: Collection of instructor_ids that are teaching classes in the program</li>
+  <li><code>schedule</code>: Collection of meetings ordered ascending by date</li>
+  <ul>
+    <li><code>starts_at</code>: Datetime of meeting</li>
+    <li><code>name</code>: Name of the meeting</li>
+    <li><code>location_name</code>: Name of where the meeting will take place</li>
+  </ul>
+</ul>
+
+<h2>Methods:</h2>
+
+<h3>List</h3></strong>
+<p>
+  URL: <code>https://console.revolutionprep.com/api/v1/instructors/[id].[format]</code><br>
+  Method: <code>GET</code><br>
+  Required Parameters:<br>
+  <code>id:</code> This is the primary id of the program<br>
+</p>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+// https://console.revolutionprep.com/api/v1/programs/1309.json
+
+{
+    "id":17,
+    "name":null,
+    "full_name":"ACT Small Group Course",
+    "round":"2012 - Oct 27 ACT",
+    "price":399.0,
+    "enroll_url":"https://store.revolutionprep.com/store/confirm/113011",
+    "instructors_ids":[825,24],
+    "schedule": [
+        { 
+            "starts_at":"2012-09-19T23:00:00Z",
+            "name":"Class 1",
+            "location_name":"Live Online Classroom"
+        },{
+            "starts_at":"2012-09-26T23:00:00Z",
+            "name":"Class 2",
+            "location_name":"Live Online Classroom"
+        },{
+            "starts_at":"2012-10-03T23:00:00Z",
+            "name":"Class 3",
+            "location_name":"Live Online Classroom"
+        },{
+            "starts_at":"2012-10-10T23:00:00Z",
+            "name":"Class 4",
+            "location_name":"Live Online Classroom"
+        },{
+            "starts_at":"2012-10-17T23:00:00Z",
+            "name":"Class 5",
+            "location_name":"Live Online Classroom"
+        },{
+            "starts_at":"2012-10-24T23:00:00Z",
+            "name":"Class 6",
+            "location_name":"Live Online Classroom"
+        }
+    ]
+}
+{% endhighlight %}
