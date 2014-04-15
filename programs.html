@@ -4,6 +4,157 @@ title: Program API Docs
 slug: programs
 base_url: "../"
 ---
+
+<h1 id="program-search">API:Program Search</h1>
+
+<h2>Attributes:</h2>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>instructors</code>: List of instructors</li>
+    <ul>
+        <li><code>id</code>: Id of the instructor record</li>
+        <li><code>abbreviated_name</code>: First name of the instructor with abbreviated last name</li>
+        <li><code>university</code>: University name that the instructor attended</li>
+        <li><code>bio</code>: Truncated Biography of the instructor</li>
+        <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
+        <li><code>profile_url</code>: Url to retrieve the details of the instructor</li>
+        <li><code>awesome_rating</code>: This is a overall performance rating based on numerous factors</li>
+        <li><code>average_rating</code>: Average rating based on submitted reviews</li>
+        <li><code>reviews_count</code>: Number of submitted reviews for this instructor</li>
+        <li><code>type</code>: Type of instructor (Standard or GPA Protection)</li>
+    </ul>
+</ul>
+
+<h3>List</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/programs.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>brand_key:</code></td>
+            <td><p>Limit programs to be of a certain brand specified by the brand key.</p>  
+                <p>
+                    <strong>Options:</strong> 
+                    ap_tutoring,
+                    bootcamp,
+                    final_review,
+                    group_course,
+                    instructor_interview,
+                    instructor_training,
+                    national_merit,
+                    private_tutoring,
+                    senior_refresher,
+                    small_group_tutoring,
+                    special_event
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>segment:</code></td>
+            <td><p>Limit by segment.</p>
+                <p>
+                    <strong>Options:</strong>
+                    MathFocus, ReadingWritingFocus, ScorebackPresentation, SummerAccelerated
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>account_id:</code></td>
+            <td><p>integer id of an account. Programs must be associated with supplied account_id.</p></td>
+        </tr>
+        <tr>
+            <td><code>boost_account_id:</code></td>
+            <td><p>integer id of an account.  Boost programs associated with supplied boost_account_id to the top of the results, but still include non-associated programs.</p></td>
+        </tr>
+        <tr>
+            <td><code>instructor_id:</code></td>
+            <td><p>integer id of instructor.  Will only return programs that are taught by supplied instructor_id.</p></td>
+        </tr>
+        <tr>
+            <td><code>delivery_method:</code></td>
+            <td><p>string specifying the program delivery method.</p>
+                <p>
+                    <strong>Options:</strong>
+                    in-person, online
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>zip:</code></td>
+            <td><p>to located nearby programs.</p></td>
+        </tr>
+        <tr>
+            <td><code>limit:</code></td>
+            <td><p>the number of programs to be returned.</p></td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 25 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/programs.json?brand_key=small_group_course
+
+{
+  "current_page": 1,
+  "total_entries": 1,
+  "total_pages": 1,
+  "programs": [
+      {
+          "id": 21089,
+          "subject": "SAT",
+          "round": "SAT",
+          "description": "SAT Bootcamp",
+          "starts_at": "04/10/14",
+          "ends_at": "06/20/14",
+          "meetings_at": "Wed 3 PM CDT",
+          "price": "$49",
+          "enroll_url": "https://store.revolutionprep.com/store/confirm/171206",
+          "venue": 
+                {
+                    "name": "Wylie High School",
+                    "address": "2550 W. Farm to Market 544",
+                    "city": "Wylie",
+                    "state": "TX",
+                    "zip_code": "75098",
+                    "distance": null,
+                }
+          "account": 
+                {
+                     "id": 9697,
+                     "name": "Wylie High School",
+                     "restrict_by_account": false,
+                }
+          "instructors": [
+                {
+                     "id": 1999,
+                     "name": "John G.",
+                     "avatar_url": https://s3.amazonaws.com/9639/John_cropped.jpg,
+                }
+          ]
+
+      }
+  ]
+}
+{% endhighlight %}
+
+
+
+<hr />
+
 <h1 id="program-details">API:Program Details</h1>
 
 <h2>Attributes:</h2>
@@ -34,7 +185,7 @@ base_url: "../"
 
 <h3>List</h3></strong>
 <p>
-  URL: <code>https://console.revolutionprep.com/api/v1/instructors/[id].[format]</code><br>
+  URL: <code>https://console.revolutionprep.com/api/v1/programs/[id].[format]</code><br>
   Method: <code>GET</code><br>
   Required Parameters:<br>
   <code>id:</code> This is the primary id of the program<br>
@@ -42,7 +193,7 @@ base_url: "../"
 
 <h3>JSON example</h3>
 {% highlight javascript %}
-// https://console.revolutionprep.com/api/v1/programs/1309.json
+https://console.revolutionprep.com/api/v1/programs/1309.json
 
 {
     "id":17,

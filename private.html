@@ -1,0 +1,555 @@
+---
+layout: docs
+title: Private API Docs
+slug: private
+base_url: "../"
+---
+<h1>Private API</h1>
+<hr />
+
+<h2 id="authentication">Authentication</h2>
+<p>Clients must authorize using basic http authentication in order to access any of the private API's listed on this page.</p>
+<p>Connect with the Revolution Prep development team in order to access the current credentials.</p>
+
+<hr />
+
+<h2 id="instructors">Instructors</h2>
+<p>Clients must authorize using basic http authentication in order to access any of the private API's listed on this page.</p>
+<p>Connect with the Revolution Prep development team in order to access the current credentials.</p>
+
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>instructors</code>: List of instructors</li>
+    <ul>
+        <li><code>id</code>: Id of the instructor record</li>
+        <li><code>first_name</code>: First name of the instructor</li>
+        <li><code>last_name</code>: Last name that the instructor</li>
+        <li><code>email</code>: Email of the instrucor</li>
+        <li><code>phone</code>: Phone of the instructor</li>
+        <li><code>address</code>: Hash of the instructor address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+        <li><code>profile</code>: Hash of the instructor profile attributes</li>
+        <ul>
+            <li><code>university</code>: University name that the instructor attended</li>
+            <li><code>major</code>: Major of instructor</li>
+            <li><code>degree</code>: Degree of instructor</li>
+            <li><code>last_score_percentile</code>: Percentage of instructor score on the SAT or ACT</li>
+            <li><code>star_rating</code>: The average star rating (out of 5 stars) from student reviews</li>
+            <li><code>biography</code>: Biography of the instructor</li>
+            <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
+        </ul>
+    </ul>
+</ul>
+
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/instructors.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/instructors.json
+
+{
+    current_page: 1,
+    total_entries: 117,
+    total_pages: 1,
+    instructors: [
+        {
+            id: 3038,
+            first_name: "Stanis",
+            last_name: "Tsibulsky",
+            email: "stanis.tsibulsky@gmail.com",
+            phone: "333-222-4444",
+            address: {
+                street_1: "1234 Main Street",
+                street_2: null,
+                city: "Chicago",
+                state: "IL",
+                zip: "60622"
+            },
+            profile: {
+                university: "University of Michigan",
+                major: "History of Art, Contemporary Asian Studies",
+                degree: "BA, MSC",
+                last_score_percentile: null,
+                star_rating: 4.7412,
+                biography: "Having taken many AP classes in high school, Stanis...",
+                avatar_url: "https://s3.amazonaws.com/profile_attachments/9732/stanis_cropped.jpg"
+            }
+        }
+    ]
+}
+{% endhighlight %}
+
+
+
+<hr />
+
+<h2 id="parents">Parents</h2>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>parents</code>: List of parents</li>
+    <ul>
+        <li><code>id</code>: Id of the parent record</li>
+        <li><code>first_name</code>: First name of the parent</li>
+        <li><code>last_name</code>: Last name that the parent</li>
+        <li><code>email</code>: Email of the parent</li>
+        <li><code>phone</code>: Phone of the parent</li>
+        <li><code>family_id</code>: Associated family identifier</li>
+        <li><code>address</code>: Hash of the parent address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+    </ul>
+</ul>
+
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/parents.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/parents.json
+
+{
+    current_page: 1,
+    total_entries: 38430,
+    total_pages: 39,
+    parents: [
+        {
+            id: 1,
+            first_name: "Byron",
+            last_name: "Lawler",
+            email: "byron@gmail.com",
+            phone: "555-555-5555",
+            family_id: 2,
+            address: {
+                street_1: "123 Parent Lane",
+                street_2: null,
+                city: "Beverly Hills",
+                state: "CA",
+                zip: "90210"
+            }
+        }
+    ]
+}
+{% endhighlight %}
+
+<hr />
+
+<h2 id="programs">Programs</h2>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>programs</code>: List of programs</li>
+    <ul>
+        <li><code>id</code>: Id of the program record</li>
+        <li><code>created_at</code>: Creation date of the program</li>
+        <li><code>updated_at</code>: Last updated performed at</li>
+        <li><code>segment</code>: Segment of the program (optional)</li>
+        <li><code>subject</code>: Subject of the program (optional)</li>
+        <li><code>brand</code>: Brand of the program</li>
+        <li><code>round</code>: Round the program is preparing for (optional)</li>
+        <li><code>price</code>: Price of the program</li>
+        <li><code>delivery_method</code>: Online or In Person</li>
+        <li><code>next_meeting</code>: Date of the next scheduled session</li>
+        <li><code>schedulable_hours</code>: Optional hash for any program that is schedulable</li>
+        <ul>
+            <li><code>total_hours</code>: total hours of program</li>
+            <li><code>remaining_hours</code>: remaining hours</li>
+            <li><code>unscheduled_hours</code>: number of hours that have not yet been scheduled</li>
+        </ul>
+        <li><code>instructor_ids</code>: Array of instructor ids that will be teaching the program</li>
+        <li><code>location</code>: Location of an In-Person program (optional)</li>
+        <ul>
+            <li><code>name</code>: Name of the location</li>
+            <li><code>address</code>: Hash of the location address</li>
+            <ul>
+                <li><code>street_1</code></li>
+                <li><code>street_2</code></li>
+                <li><code>city</code></li>
+                <li><code>state</code></li>
+                <li><code>zip</code></li>
+            </ul>
+        </ul>
+    </ul>
+</ul>
+
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/programs.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/programs.json
+
+{
+    current_page: 1,
+    total_entries: 467,
+    total_pages: 5,
+    programs: [
+        {
+            id: 15674,
+            created_at: "2013-10-17T08:06:01-07:00",
+            updated_at: "2014-04-09T11:28:32-07:00",
+            segment: null,
+            subject: "SAT",
+            brand: "Group Course",
+            round: "2014 - June 7 SAT",
+            price: 599,
+            delivery_method: "In Person",
+            next_meeting: "2014-04-17T18:00:00-07:00",
+            instructor_ids: [ ],
+            schedulable_hours: {
+                total_hours: 30,
+                remaining_hours: 26.8,
+                unscheduled_hours: 26.8
+            },
+            location: {
+                name: "Junipero Serra High School",
+                address: {
+                    street_1: "451 West 20th Avenue",
+                    street_2: null,
+                    city: "San Mateo",
+                    state: "CA",
+                    zip: "94403"
+                }
+            }
+        }
+    ]
+}
+{% endhighlight %}
+
+
+<hr />
+
+<h2 id="schools">Schools</h2>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>programs</code>: List of programs</li>
+    <ul>
+        <li><code>id</code>: Id of the school record</li>
+        <li><code>name</code>: Name of the school</li>
+        <li><code>star_level</code>: 0-3 integer indicating sales quality of school</li>
+        <li><code>region</code>: Region of school</li>
+        <li><code>address</code>: Hash of the school address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+    </ul>
+</ul>
+
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/schools.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/schools.json
+
+{
+    current_page: 1,
+    total_entries: 2,
+    total_pages: 1,
+    schools: [
+        {
+            id: 9853,
+            name: "International Studies Academy",
+            star_level: 1,
+            region: "Central Marketing",
+            address: {
+                street_1: "1234 Main Street",
+                street_2: "",
+                city: "San Francisco",
+                state: "CA",
+                zip: "94107"
+            }
+        },
+        {
+            id: 8331,
+            name: "Kingwood Park High School",
+            star_level: 1,
+            region: "Central Marketing",
+            address: {
+                street_1: "",
+                street_2: "",
+                city: "Kingwood",
+                state: "TX",
+                zip: "77339"
+            }
+        }
+    ]
+}
+{% endhighlight %}
+
+<hr />
+
+<h2 id="students">Students</h2>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>parents</code>: List of parents</li>
+    <ul>
+        <li><code>id</code>: Id of the student record</li>
+        <li><code>first_name</code>: First name of the student</li>
+        <li><code>last_name</code>: Last name that the student</li>
+        <li><code>email</code>: Email of the parent</li>
+        <li><code>phone</code>: Phone of the parent</li>
+        <li><code>family_id</code>: Associated family identifier</li>
+        <li><code>graduation_year</code>: Graduation year of student</li>
+        <li><code>school_id</code>: Associated school identifier</li>
+        <li><code>address</code>: Hash of the parent address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+        <li><code>enrollments</code>: Array of any program enrollments</li>
+        <ul>
+            <li><code>id</code>: Identifier for enrollment</li>
+            <li><code>program_id</code>: Identifier for enrolled program</li>
+            <li><code>status</code>: Status of the enrollment.  Enrolled or Unenrolled</li>
+        </ul>
+    </ul>
+</ul>
+
+
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/students.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/students.json
+
+{
+    current_page: 1,
+    total_entries: 44746,
+    total_pages: 45,
+    students: [
+        {
+            id: 22112,
+            first_name: "Miriam",
+            last_name: "Cohen",
+            email: "miriam@gmail.net",
+            phone: "222-333-4444",
+            family_id: 27,
+            graduation_year: 2015,
+            school_id: 249,
+            address: {
+                street_1: "1234 Main Street",
+                street_2: null,
+                city: "Sunnyvale",
+                state: "CA",
+                zip: "94087"
+            },
+            enrollments: [
+                {
+                    id: 52800,
+                    program_id: 10771,
+                    status: "Enrolled"
+                }
+            ]
+        }
+    ]
+}
+{% endhighlight %}
