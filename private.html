@@ -17,41 +17,6 @@ base_url: "../"
 <p>Clients must authorize using basic http authentication in order to access any of the private API's listed on this page.</p>
 <p>Connect with the Revolution Prep development team in order to access the current credentials.</p>
 
-<ul>
-    <li><code>current_page</code>: Current page # of results</li>
-    <li><code>total_entries</code>: Total number of results for the given query</li>
-    <li><code>total_pages</code>: Total number of pages of results</li>
-    <li><code>instructors</code>: List of instructors</li>
-    <ul>
-        <li><code>id</code>: Id of the instructor record</li>
-        <li><code>created_at</code>: Creation date of the record</li>
-        <li><code>updated_at</code>: Last updated performed at</li>
-        <li><code>first_name</code>: First name of the instructor</li>
-        <li><code>last_name</code>: Last name that the instructor</li>
-        <li><code>email</code>: Email of the instrucor</li>
-        <li><code>phone</code>: Phone of the instructor</li>
-        <li><code>address</code>: Hash of the instructor address</li>
-        <ul>
-            <li><code>street_1</code></li>
-            <li><code>street_2</code></li>
-            <li><code>city</code></li>
-            <li><code>state</code></li>
-            <li><code>zip</code></li>
-        </ul>
-        <li><code>profile</code>: Hash of the instructor profile attributes</li>
-        <ul>
-            <li><code>university</code>: University name that the instructor attended</li>
-            <li><code>major</code>: Major of instructor</li>
-            <li><code>degree</code>: Degree of instructor</li>
-            <li><code>last_score_percentile</code>: Percentage of instructor score on the SAT or ACT</li>
-            <li><code>star_rating</code>: The average star rating (out of 5 stars) from student reviews</li>
-            <li><code>biography</code>: Biography of the instructor</li>
-            <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
-        </ul>
-    </ul>
-</ul>
-
-
 <h3>Index</h3>
 <p>
     URL: <code>https://console.revolutionprep.com/api/v1/private/instructors.json</code><br>
@@ -87,6 +52,42 @@ base_url: "../"
         </tr>
     </tbody>
 </table>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>instructors</code>: List of instructors</li>
+    <ul>
+        <li><code>id</code>: Id of the instructor record</li>
+        <li><code>created_at</code>: Creation date of the record</li>
+        <li><code>updated_at</code>: Last updated performed at</li>
+        <li><code>first_name</code>: First name of the instructor</li>
+        <li><code>last_name</code>: Last name that the instructor</li>
+        <li><code>email</code>: Email of the instrucor</li>
+        <li><code>phone</code>: Phone of the instructor</li>
+        <li><code>address</code>: Hash of the instructor address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+        <li><code>profile</code>: Hash of the instructor profile attributes</li>
+        <ul>
+            <li><code>university</code>: University name that the instructor attended</li>
+            <li><code>major</code>: Major of instructor</li>
+            <li><code>degree</code>: Degree of instructor</li>
+            <li><code>last_score_percentile</code>: Percentage of instructor score on the SAT or ACT</li>
+            <li><code>star_rating</code>: The average star rating (out of 5 stars) from student reviews</li>
+            <li><code>biography</code>: Biography of the instructor</li>
+            <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
+        </ul>
+    </ul>
+</ul>
+
 
 <h3>JSON example</h3>
 {% highlight javascript %}
@@ -131,35 +132,6 @@ https://console.revolutionprep.com/api/v1/private/instructors.json
 <hr />
 
 <h2 id="parents">Parents</h2>
-
-<h3>Attributes:</h3>
-<ul>
-    <li><code>current_page</code>: Current page # of results</li>
-    <li><code>total_entries</code>: Total number of results for the given query</li>
-    <li><code>total_pages</code>: Total number of pages of results</li>
-    <li><code>parents</code>: List of parents</li>
-    <ul>
-        <li><code>id</code>: Id of the parent record</li>
-        <li><code>created_at</code>: Creation date of the record</li>
-        <li><code>updated_at</code>: Last updated performed at</li>
-        <li><code>sales_force_id</code>: Sales Force contact Id (string)</li>
-        <li><code>first_name</code>: First name of the parent</li>
-        <li><code>last_name</code>: Last name that the parent</li>
-        <li><code>email</code>: Email of the parent</li>
-        <li><code>phone</code>: Phone of the parent</li>
-        <li><code>family_id</code>: Associated family identifier</li>
-        <li><code>address</code>: Hash of the parent address</li>
-        <ul>
-            <li><code>street_1</code></li>
-            <li><code>street_2</code></li>
-            <li><code>city</code></li>
-            <li><code>state</code></li>
-            <li><code>zip</code></li>
-        </ul>
-    </ul>
-</ul>
-
-
 <h3>Index</h3>
 <p>
     URL: <code>https://console.revolutionprep.com/api/v1/private/parents.json</code><br>
@@ -196,6 +168,34 @@ https://console.revolutionprep.com/api/v1/private/instructors.json
     </tbody>
 </table>
 
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>parents</code>: List of parents</li>
+    <ul>
+        <li><code>id</code>: Id of the parent record</li>
+        <li><code>created_at</code>: Creation date of the record</li>
+        <li><code>updated_at</code>: Last updated performed at</li>
+        <li><code>sales_force_id</code>: Sales Force contact Id (string)</li>
+        <li><code>first_name</code>: First name of the parent</li>
+        <li><code>last_name</code>: Last name that the parent</li>
+        <li><code>email</code>: Email of the parent</li>
+        <li><code>phone</code>: Phone of the parent</li>
+        <li><code>family_id</code>: Associated family identifier</li>
+        <li><code>address</code>: Hash of the parent address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+    </ul>
+</ul>
+
+
 <h3>JSON example</h3>
 {% highlight javascript %}
 https://console.revolutionprep.com/api/v1/private/parents.json
@@ -230,6 +230,42 @@ https://console.revolutionprep.com/api/v1/private/parents.json
 <hr />
 
 <h2 id="programs">Programs</h2>
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/programs.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
 
 <h3>Attributes:</h3>
 <ul>
@@ -269,43 +305,6 @@ https://console.revolutionprep.com/api/v1/private/parents.json
         </ul>
     </ul>
 </ul>
-
-
-<h3>Index</h3>
-<p>
-    URL: <code>https://console.revolutionprep.com/api/v1/private/programs.json</code><br>
-    Method: <code>GET</code><br>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th colspan='2'>Optional Parameters</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>start_date</code><br /><code>end_date</code></td>
-            <td>
-                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
-                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
-                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
-                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
-            </td>
-        </tr>
-        <tr>
-            <td><code>ids:</code></td>
-            <td>
-                <p>Limit by parents by ids.</p>
-                <p>Parameter value should be a comma separated list of ids</p>
-                <p><strong>Example:</strong> ids=1,2,3</p>
-            </td>
-        </tr>
-        <tr>
-            <td><code>page:</code></td>
-            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
-        </tr>
-    </tbody>
-</table>
 
 <h3>JSON example</h3>
 {% highlight javascript %}
@@ -353,31 +352,6 @@ https://console.revolutionprep.com/api/v1/private/programs.json
 
 <h2 id="schools">Schools</h2>
 
-<h3>Attributes:</h3>
-<ul>
-    <li><code>current_page</code>: Current page # of results</li>
-    <li><code>total_entries</code>: Total number of results for the given query</li>
-    <li><code>total_pages</code>: Total number of pages of results</li>
-    <li><code>programs</code>: List of programs</li>
-    <ul>
-        <li><code>id</code>: Id of the school record</li>
-        <li><code>created_at</code>: Creation date of the record</li>
-        <li><code>updated_at</code>: Last updated performed at</li>
-        <li><code>name</code>: Name of the school</li>
-        <li><code>star_level</code>: 0-3 integer indicating sales quality of school</li>
-        <li><code>region</code>: Region of school</li>
-        <li><code>address</code>: Hash of the school address</li>
-        <ul>
-            <li><code>street_1</code></li>
-            <li><code>street_2</code></li>
-            <li><code>city</code></li>
-            <li><code>state</code></li>
-            <li><code>zip</code></li>
-        </ul>
-    </ul>
-</ul>
-
-
 <h3>Index</h3>
 <p>
     URL: <code>https://console.revolutionprep.com/api/v1/private/schools.json</code><br>
@@ -414,6 +388,29 @@ https://console.revolutionprep.com/api/v1/private/programs.json
     </tbody>
 </table>
 
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>programs</code>: List of programs</li>
+    <ul>
+        <li><code>id</code>: Id of the school record</li>
+        <li><code>created_at</code>: Creation date of the record</li>
+        <li><code>updated_at</code>: Last updated performed at</li>
+        <li><code>name</code>: Name of the school</li>
+        <li><code>star_level</code>: 0-3 integer indicating sales quality of school</li>
+        <li><code>region</code>: Region of school</li>
+        <li><code>address</code>: Hash of the school address</li>
+        <ul>
+            <li><code>street_1</code></li>
+            <li><code>street_2</code></li>
+            <li><code>city</code></li>
+            <li><code>state</code></li>
+            <li><code>zip</code></li>
+        </ul>
+    </ul>
+</ul>
 
 <h3>JSON example</h3>
 {% highlight javascript %}
@@ -461,6 +458,42 @@ https://console.revolutionprep.com/api/v1/private/schools.json
 <hr />
 
 <h2 id="students">Students</h2>
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/students.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by parents by ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
 
 <h3>Attributes:</h3>
 <ul>
@@ -496,45 +529,6 @@ https://console.revolutionprep.com/api/v1/private/schools.json
         </ul>
     </ul>
 </ul>
-
-
-
-<h3>Index</h3>
-<p>
-    URL: <code>https://console.revolutionprep.com/api/v1/private/students.json</code><br>
-    Method: <code>GET</code><br>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th colspan='2'>Optional Parameters</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>start_date</code><br /><code>end_date</code></td>
-            <td>
-                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
-                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
-                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
-                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
-            </td>
-        </tr>
-        <tr>
-            <td><code>ids:</code></td>
-            <td>
-                <p>Limit by parents by ids.</p>
-                <p>Parameter value should be a comma separated list of ids</p>
-                <p><strong>Example:</strong> ids=1,2,3</p>
-            </td>
-        </tr>
-        <tr>
-            <td><code>page:</code></td>
-            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
-        </tr>
-    </tbody>
-</table>
-
 
 <h3>JSON example</h3>
 {% highlight javascript %}
@@ -575,3 +569,215 @@ https://console.revolutionprep.com/api/v1/private/students.json
     ]
 }
 {% endhighlight %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr />
+
+<h2 id="notes">Notes</h2>
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/notes.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>parents</code>: List of parents</li>
+    <ul>
+        <li><code>id</code>: Id of the note record</li>
+        <li><code>created_at</code>: Creation date of the record</li>
+        <li><code>updated_at</code>: Last updated performed at</li>
+        <li><code>message</code>: Notes message (text)</li>
+        <li><code>note_type</code>: Type of note (string)</li>
+        <li><code>employee_id</code>: Employee ID of the author of note</li>
+        <li><code>console_id</code>: ID of console user the note is for</li>
+        <li><code>user_type</code>: Type of the console user</li>
+        <li><code>sales_force_id</code>: Sales Force contact Id (string)</li>
+    </ul>
+</ul>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/notes.json
+
+{
+    current_page: 1,
+    total_entries: 375220,
+    total_pages: 376,
+    notes: [
+        {
+            id: 437711,
+            created_at: "2014-02-07T01:11:25-08:00",
+            updated_at: "2014-02-07T01:11:25-08:00",
+            message: "This user was merged into user Paris PAUL (172448)",
+            note_type: "Service",
+            employee_id: 147,
+            console_id: 56,
+            user_type: "student",
+            sales_force_id: "003J000000x7AAAAA3"
+        }
+    ]
+}
+{% endhighlight %}
+
+<br />
+
+<h3>Create</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/notes.json</code><br>
+    Method: <code>POST</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Required Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>console_id</code><br /><code>user_type</code></td>
+            <td>
+                <p>The console record id the note is intended for.  Must be accompanied by the user_type (student, parent, employee).</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>message:</code></td>
+            <td><p>The content of the note.</p></td>
+        </tr>
+        <tr>
+            <td><code>employee_id:</code></td>
+            <td><p>The console employee ID of the writer of the note.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Response</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Successful</td>
+            <td>
+                <p>If the note is successfully created, the response status will be 200 and will render the newly created notes id as json:</p>
+                <code>:id => note.id</code>
+            </td>
+        </tr>
+        <tr>
+            <td>Failure</td>
+            <td>
+                <p>If the note cannot be created, the response status will be 422 and will render json:</p>
+                <code>:error => "Reason note could not be created"</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+
+<h3>Update</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/note/:note_id.json</code><br>
+    Method: <code>PUT</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Required Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>:id</code></td>
+            <td>
+                <p>The console note_id of the note to be updated.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>message:</code></td>
+            <td><p>The content of the note.</p></td>
+        </tr>
+        <tr>
+            <td><code>employee_id:</code></td>
+            <td><p>The console employee ID of the writer/editor of the note.  This will overwrite the employee_id.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Response</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Successful</td>
+            <td>
+                <p>If the note is successfully created, the response status will be 200.  There will be no response json rendered.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>Failure</td>
+            <td>
+                <p>If the note cannot be created, the response status will be 422 and will render json:</p>
+                <code>:error => "Reason note could not be created"</code>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
