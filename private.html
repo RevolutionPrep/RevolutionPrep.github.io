@@ -290,6 +290,9 @@ https://console.revolutionprep.com/api/v1/private/parents.json
             <li><code>remaining_hours</code>: remaining hours</li>
             <li><code>unscheduled_hours</code>: number of hours that have not yet been scheduled</li>
         </ul>
+        <li><code>desired_start_date</code>: Ideal start date of program (date)</li>
+        <li><code>desired_schedule</code>: String describing ideal schedule</li>
+        <li><code>primary_scheduling_contact</code>: Will be either null, Parent, or Student</li>
         <li><code>instructor_ids</code>: Array of instructor ids that will be teaching the program</li>
         <li><code>location</code>: Location of an In-Person program (optional)</li>
         <ul>
@@ -326,6 +329,9 @@ https://console.revolutionprep.com/api/v1/private/programs.json
             price: 599,
             delivery_method: "In Person",
             next_meeting: "2014-04-17T18:00:00-07:00",
+            desired_start_date => "2014-04-10T18:00:00-07:00",
+            :desired_schedule => "Wednesday nights",
+            :primary_scheduling_contact => "Parent",
             instructor_ids: [ ],
             schedulable_hours: {
                 total_hours: 30,
@@ -569,31 +575,6 @@ https://console.revolutionprep.com/api/v1/private/students.json
     ]
 }
 {% endhighlight %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <hr />
 
