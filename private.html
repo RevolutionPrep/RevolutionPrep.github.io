@@ -409,16 +409,19 @@ https://console.revolutionprep.com/api/v1/private/programs.json
         <li><code>id</code>: Id of the proposal record</li>
         <li><code>created_at</code>: Creation date of the proposal</li>
         <li><code>updated_at</code>: Last updated performed at</li>
+        <li><code>type</code>: Type of the proposal: <strong>proposal</strong> or <strong>re-up</strong>.  Type <strong>proposal</strong> is for a new program of study. This type will only have a program_id in won state. A <strong>re-up</strong> is a proposal to add hours to an existing program of study.  As such, a program_id will be set in all states of a <strong>re-up</strong> proposal.</li>
         <li><code>state</code>: State of proposal. Will be one of the following: open, lost, or won</li>
         <li><code>hours</code>: Total proposed hours of instruction</li>
-        <li><code>price</code>: Price of the proposal (in USD and will not include currency formatting)</li>
+        <li><code>full_price</code>: Full price of the proposal without any discounts (in USD and will not include currency formatting)</li>
+        <li><code>discount</code>: Amount to be discounted off full price (in USD and will not include currency formatting)</li>
+        <li><code>net_price</code>: Full price minus any discount (in USD and will not include currency formatting)</li>
         <li><code>delivery_method</code>: in-person or online</li>
         <li><code>brand</code>: Brand of proposed program</li>
         <li><code>segment</code>: Segment of the proposed program</li>
         <li><code>subject</code>: Subject of the proposed program</li>
         <li><code>student_id</code>: ID of the student associated with the proposal</li>
         <li><code>instructor_id</code>: ID of the instructor associated with the proposal</li>
-        <li><code>program_id</code>: ID of the program a won proposal was delivered into.  Only 'won' proposals will have a program_id.</li>
+        <li><code>program_id</code>: ID of the program a won proposal was delivered into.  Proposals of type 'proposal' will only have a program_id if the proposal is in state 'won'.  If the proposal type is 're-up', a program_id will be set in all states.</li>
     </ul>
 </ul>
 
