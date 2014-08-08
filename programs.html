@@ -12,18 +12,42 @@ base_url: "../"
     <li><code>current_page</code>: Current page # of results</li>
     <li><code>total_entries</code>: Total number of results for the given query</li>
     <li><code>total_pages</code>: Total number of pages of results</li>
-    <li><code>instructors</code>: List of instructors</li>
+    <li><code>programs</code>: List of instructors</li>
     <ul>
         <li><code>id</code>: Id of the instructor record</li>
-        <li><code>abbreviated_name</code>: First name of the instructor with abbreviated last name</li>
-        <li><code>university</code>: University name that the instructor attended</li>
-        <li><code>bio</code>: Truncated Biography of the instructor</li>
-        <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
-        <li><code>profile_url</code>: Url to retrieve the details of the instructor</li>
-        <li><code>awesome_rating</code>: This is a overall performance rating based on numerous factors</li>
-        <li><code>average_rating</code>: Average rating based on submitted reviews</li>
-        <li><code>reviews_count</code>: Number of submitted reviews for this instructor</li>
-        <li><code>type</code>: Type of instructor (Standard or GPA Protection)</li>
+        <li><code>subject</code>: Subject name of the program</li>
+        <li><code>round</code>: Round name the program is preparing for</li>
+        <li><code>description</code>: Description of the program</li>
+        <li><code>starts_at</code>: Start date of the program</li>
+        <li><code>ends_at</code>: End date of the program</li>
+        <li><code>enrollment_cap</code>: Maximum number of students that may enroll in the program.  If null, there is no limit.</li>
+        <li><code>seats_remaining</code>: Remaining number of spaces available in the program. Will be null if enrollment_cap is null</li>
+        <li><code>meetings_at</code>: String listing the days and times the program meets</li>
+        <li><code>price</code>: Price of the program</li>
+        <li><code>enroll_url</code>: Url to visit to add program to store cart</li>
+        <li><code>hybrid price</code>: Price of the program with the Hybrid upgrade</li>
+        <li><code>hybrid_enroll_url</code>: Url to visit to add hybrid program to store cart</li>
+        <li><code>venue</code>: (optional) venue details</li>
+        <ul>
+          <li><code>name</code>: name of venue location</li>
+          <li><code>address</code>: street address of venue</li>
+          <li><code>city</code>: city of venue</li>
+          <li><code>state</code>: state of venue</li>
+          <li><code>zip_code</code>: zip of venue</li>
+          <li><code>distance</code>: (optional) distance from user to location</li>
+        </ul>
+        <li><code>account</code>: (optional) associated account</li>
+        <ul>
+          <li><code>id</code>: account id</li>
+          <li><code>name</code>: account name</li>
+          <li><code>restrict_by_account</code>: if true, only students attending this account may enroll in the program</li>
+        </ul>
+        <li><code>instructors</code>: (optional) List of staffed classroom instructors (does not include proctors for exams)</li>
+        <ul>
+          <li><code>id</code>: instructor id</li>
+          <li><code>name</code>: instructor's abbreviated name</li>
+          <li><code>avatar_url</code>: instructor avatar url</li>
+        </ul>
     </ul>
 </ul>
 
@@ -109,44 +133,38 @@ base_url: "../"
 https://console.revolutionprep.com/api/v1/programs.json?brand_key=small_group_course
 
 {
-  "current_page": 1,
-  "total_entries": 1,
-  "total_pages": 1,
-  "programs": [
-      {
-          "id": 21089,
-          "subject": "SAT",
-          "round": "SAT",
-          "description": "SAT Bootcamp",
-          "starts_at": "04/10/14",
-          "ends_at": "06/20/14",
-          "meetings_at": "Wed 3 PM CDT",
-          "price": "$49",
-          "enroll_url": "https://store.revolutionprep.com/store/confirm/171206",
-          "venue": 
-                {
-                    "name": "Wylie High School",
-                    "address": "2550 W. Farm to Market 544",
-                    "city": "Wylie",
-                    "state": "TX",
-                    "zip_code": "75098",
-                    "distance": null,
-                }
-          "account": 
-                {
-                     "id": 9697,
-                     "name": "Wylie High School",
-                     "restrict_by_account": false,
-                }
-          "instructors": [
-                {
-                     "id": 1999,
-                     "name": "John G.",
-                     "avatar_url": https://s3.amazonaws.com/9639/John_cropped.jpg,
-                }
-          ]
-
-      }
+  current_page: 1,
+  total_entries: 250,
+  total_pages: 13,
+  key: null,
+  programs: [
+    {
+      id: 22457,
+      subject: "SAT",
+      round: "SAT on Oct 11",
+      description: "Location: Live Online Classroom, Meets on Mon 11 AM, Wed 11 AM PDT starting 08/04/14 with Merrin M.",
+      starts_at: "08/04/14",
+      ends_at: "08/20/14",
+      meetings_at: "Mon 11 AM, Wed 11 AM PDT",
+      enrollment_cap: 6,
+      seats_remaining: 3,
+      price: "$599",
+      enroll_url: "https://store.revolutionprep.com/add_to_cart/19876",
+      hybrid_price: "$899",
+      hybrid_enroll_url: "https://store.revolutionprep.com/add_to_cart/19877",
+      account: {
+        id: null,
+        name: null,
+        restrict_by_account: false
+      },
+      instructors: [
+        {
+          id: 6807,
+           name: "Merrin M.",
+          avatar_url: "https://s3.amazonaws.com/revrails-production/profile_attachments/21959/muxlow__merrin_cropped.jpg"
+        }
+      ]
+    }
   ]
 }
 {% endhighlight %}
@@ -163,8 +181,12 @@ https://console.revolutionprep.com/api/v1/programs.json?brand_key=small_group_co
   <li><code>name</code>: Custom name of the program - usually nil</li>
   <li><code>full_name</code>: Descriptive name of program.  Includes subject, segment, name and brand name</li>
   <li><code>round</code>: Round the program is preparing for.</li>
+  <li><code>enrollment_cap</code>: Maximum number of students that may enroll in the program.  If null, there is no limit.</li>
+  <li><code>seats_remaining</code>: Remaining number of spaces available in the program. Will be null if enrollment_cap is null</li>
   <li><code>price</code>: Price of the program</li>
   <li><code>enroll_url</code>: Url to purchase the program</li>
+  <li><code>hybrid price</code>: Price of the program with the Hybrid upgrade</li>
+  <li><code>hybrid_enroll_url</code>: Url to visit to add hybrid program to store cart</li>
   <li><code>location</code>: Geographical location where the program is based</li>
   <ul>
     <li><code>address</code>: Address of location</li>
@@ -200,8 +222,12 @@ https://console.revolutionprep.com/api/v1/programs/1309.json
     "name":null,
     "full_name":"ACT Small Group Course",
     "round":"2012 - Oct 27 ACT",
-    "price":399.0,
+    "enrollment_cap": 10,
+    "seats_remaining": 5,
+    "price":599.0,
     "enroll_url":"https://store.revolutionprep.com/store/confirm/113011",
+    "hybrid_price": "$899",
+    "hybrid_enroll_url": "https://store.revolutionprep.com/add_to_cart/19877",
     "instructors_ids":[825,24],
     "schedule": [
         { 
