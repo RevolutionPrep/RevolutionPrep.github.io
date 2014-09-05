@@ -455,6 +455,114 @@ https://console.revolutionprep.com/api/v1/private/proposals.json
 
 
 
+
+
+
+<hr />
+
+<h2 id="revenue">Revenue</h2>
+
+<h3>Index</h3>
+<p>
+    URL: <code>https://console.revolutionprep.com/api/v1/private/revenue.json</code><br>
+    Method: <code>GET</code><br>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th colspan='2'>Optional Parameters</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>start_date</code><br /><code>end_date</code></td>
+            <td>
+                <p>Limit results to only those who have been updated within the start_date and end_date. This filter can be used in conjunction with the ids parameter.</p>
+                <p><strong>Note:</strong> start_date and end_date must both be passed to filter by updated at date range.</p>
+                <p><code>?start_date=2014-01-01&end_date=2014-12-31</code></p>
+                <p>The above example will only return records that were updated between January 1, 2014 and December 31, 2014.</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>ids:</code></td>
+            <td>
+                <p>Limit by proposal ids.</p>
+                <p>Parameter value should be a comma separated list of ids</p>
+                <p><strong>Example:</strong> ids=1,2,3</p>
+            </td>
+        </tr>
+        <tr>
+            <td><code>page:</code></td>
+            <td><p>an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 1000 records per page.</p></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Attributes:</h3>
+<ul>
+    <li><code>current_page</code>: Current page # of results</li>
+    <li><code>total_entries</code>: Total number of results for the given query</li>
+    <li><code>total_pages</code>: Total number of pages of results</li>
+    <li><code>revenue</code>: List of revenue aggregates</li>
+    <ul>
+        <li><code>id</code>: Id of the revenue record</li>
+        <li><code>purchased_at</code>: Date purchased</li>
+        <li><code>revenue</code>: Dollar amount of purchase</li>
+        <li><code>delivery_method</code>: Either 'online', 'in-person', or 'unspecified'</li>
+        <li><code>student_id</code>: Student ID revenue was purchased for</li>
+        <li><code>family_id</code>: Family ID revenue is associated with (could be null)</li>
+        <li><code>account_id</code>: Account ID of student</li>
+        <li><code>account_name</code>: Name of account</li>
+        <li><code>region_id</code>: Region ID of associated account</li>
+        <li><code>region_name</code>: Name of region</li>
+        <li><code>employee_id</code>: Employee ID of admin purchaser (will be null if purchased by the customer)</li>
+        <li><code>employee_name</code>: Name of the employee</li>
+        <li><code>source_type</code>: Could be null, LineItem, or Adjustment</li>
+        <li><code>pricing_type</code>: Either 'recurring' or 'fixed'.</li>
+        <li><code>revenue_type</code>: Revenue code for purchase</li>
+        <li><code>duration_in_minutes</code>: Total duration of the program or tutor package in minutes (null if not applicable)</li>
+        <li><code>description</code>: Name of the purchased sku</li>
+        <li><code>created_at</code>: Creation date of the proposal</li>
+        <li><code>updated_at</code>: Last updated performed at</li>
+
+    </ul>
+</ul>
+
+<h3>JSON example</h3>
+{% highlight javascript %}
+https://console.revolutionprep.com/api/v1/private/proposals.json
+
+{
+    current_page: 1,
+    total_entries: 1,
+    total_pages: 1,
+    proposals: [
+        {
+            id: 970618,
+            purchased_at: "2014-09-02T13:11:02-07:00",
+            revenue: 10,
+            delivery_method: "in-person",
+            student_id: 485016,
+            family_id: 35114,
+            account_id: 387,
+            account_name: "Santa Monica High School",
+            region_id: 222,
+            region_name: "Javier Mariscal",
+            employee_id: null,
+            employee_name: null,
+            source_type: "LineItem",
+            pricing_type: "fixed",
+            revenue_type: "SpecialEvent-PracticeExam",
+            duration_in_minutes: 240,
+            description: "SAT Practice Exam Special Event",
+            created_at: "2014-09-02T13:11:03-07:00",
+            updated_at: "2014-09-02T13:11:03-07:00"
+        }
+    ]
+}
+{% endhighlight %}
+
+
 <hr />
 
 <h2 id="schools">Schools</h2>
