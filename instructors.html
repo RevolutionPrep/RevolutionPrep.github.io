@@ -14,8 +14,10 @@ base_url: "../"
   <li><code>instructors</code>: List of instructors</li>
   <ul>
     <li><code>id</code>: Id of the instructor record</li>
+    <li><code>param</code>: Param you can pass in place of Id (friendly id) to find instructor record</li>
     <li><code>abbreviated_name</code>: First name of the instructor with abbreviated last name</li>
     <li><code>university</code>: University name that the instructor attended</li>
+    <li><code>major</code>: Major of instructor</li>
     <li><code>bio</code>: Truncated Biography of the instructor</li>
     <li><code>avatar_url</code>: Url to retrieve the headshot of the instructor</li>
     <li><code>profile_url</code>: Url to retrieve the details of the instructor</li>
@@ -23,6 +25,10 @@ base_url: "../"
     <li><code>average_rating</code>: Average rating based on submitted reviews</li>
     <li><code>reviews_count</code>: Number of submitted reviews for this instructor</li>
     <li><code>type</code>: Type of instructor (Standard or GPA Protection)</li>
+    <li><code>hours_taught</code>: Float number of instructional hours taught</li>
+    <li><code>accepts_work</code>: boolean indicating if instructor is accepting new assignments</li>
+    <li><code>tier</code>: String description of highest level</li>
+    
   </ul>
 </ul>
 
@@ -35,6 +41,9 @@ base_url: "../"
   Optional Parameters:<br>
   <code>query:</code> This could be any combination of words separated by spaces<br>
   <code>zip:</code> A US zip code which returns results sorted by zip code nearest to furthest<br>
+  <code>subject_short_name:</code> A string with a parameterized version of the instructor subject name ('algebra-i', 'computer-science')<br>
+  <code>subject_category_short_name:</code> A string with a parameterized version of the instructor subject category name ('math', 'test-prep')<br>
+  <code>professional:</code> Boolean ('true', '1' or 'false', '0') that if true, will only include 'professional' tutors in result set<br>
   <code>account_id:</code> Instructors must have been reviewed with a 4+ star rating by a student associated with that account_id<br>
   <code>page:</code> an integer value which specifies which page of results to fetch, starting at 1. Fetching successively higher page numbers will return additional results, until there are no results to return (in which case an empty result set will be returned). Defaults to 1 page and 25 records per page<br>
 </p>
@@ -50,8 +59,10 @@ base_url: "../"
       "instructors": [
           {
               "id": 1309,
+              "param": "jimmy",
               "abbreviated_name": "Jimmy B.",
               "university": "Chapman University",
+              "major": "B.S. Art History",
               "bio": "Jimmy has been teaching for six years.  He started out directing Shakespeare for youth theater, a...",
               "avatar_url": "https://s3.amazonaws.com/revrails-development/profile_attachments/9688/Jimmy.Bowman.jpg",
               "profile_url": "http://http://localhost:3333/api/v1/instructors/1309.json",
@@ -59,6 +70,9 @@ base_url: "../"
               "average_rating": 4.9,
               "reviews_count": 270,
               "type": "Standard Tutor"
+              "hours_taught": 1200,
+              "accepts_work": true,
+              "tier": "Distinguished"
           }
       ]
   }
@@ -80,7 +94,9 @@ base_url: "../"
   <li><code>type</code>: Type of instructor (Standard or GPA Protection)</li>
   <li><code>sat_percentile</code>: Sat score percentile</li>
   <li><code>act_percentile</code>: Act score percentile</li>
-  <li><code>premium</code>: Returns true if instructor is a premium instructor</li>
+  <li><code>hours_taught</code>: Float number of instructional hours taught</li>
+  <li><code>accepts_work</code>: boolean indicating if instructor is accepting new assignments</li>
+  <li><code>tier</code>: String description of highest level</li>
   <li><code>subjects</code>: An array of subject names the instructor is proficient in teaching</li>
   <li><code>location</code>: Geographical location where the instructor is based</li>
   <ul>
@@ -124,10 +140,16 @@ base_url: "../"
   "type": "Standard",
   "sat_percentile": 99,
   "act_percentile": null,
-  "premium": false,
+  "hours_taught": 1200,
+  "accepts_work": true,
+  "tier": "Distinguished",
   "subjects": [
-      "10th Grade English",
-      "9th Grade English"
+      {
+        name: "10th Grade English",
+        short_name: 10th-grade-english,
+        category_name: "English Language and Literature",
+        category_short_name: "english-language-and-literature"
+      }
   ],
   "location": {
       "city": "Toluca Lake",
